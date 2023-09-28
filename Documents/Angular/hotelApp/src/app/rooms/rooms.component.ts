@@ -1,19 +1,22 @@
 import {
   Component,
   DoCheck,
+  OnDestroy,
+  OnInit,
   QueryList,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { Room, RoomDetails } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { RoomsService } from './services/rooms.service';
 
 @Component({
   selector: 'hotelApp-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss'],
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit {
   hotelName = 'Rose Hotels';
   noOfRooms = 10;
   title = 'Room Details';
@@ -61,7 +64,9 @@ export class RoomsComponent {
   @ViewChildren(HeaderComponent)
   headerChildrenComponent!: QueryList<HeaderComponent>;
 
-  constructor() {}
+  // roomService = new RoomsService();
+
+  constructor(private roomService: RoomsService) {}
 
   ngAfterViewInit() {
     console.log(this.headerComponent);
@@ -69,38 +74,9 @@ export class RoomsComponent {
   }
 
   ngOnInit(): void {
+    this.roomsDetail = this.roomService.getRooms();
     console.log(this.headerComponent);
     this.headerComponent.title = 'My new Room';
-    this.roomsDetail = [
-      {
-        rooNo: 1,
-        roomType: 'Delex',
-        avalabel: true,
-        bookInTime: new Date('11-Nov-12'),
-        bookOutTime: new Date('11-Nov-12'),
-      },
-      {
-        rooNo: 2,
-        roomType: 'Delex',
-        avalabel: true,
-        bookInTime: new Date('11-Nov-12'),
-        bookOutTime: new Date('11-Nov-12'),
-      },
-      {
-        rooNo: 3,
-        roomType: 'Delex',
-        avalabel: true,
-        bookInTime: new Date('11-Nov-12'),
-        bookOutTime: new Date('11-Nov-12'),
-      },
-      {
-        rooNo: 4,
-        roomType: 'Delex',
-        avalabel: true,
-        bookInTime: new Date('11-Nov-12'),
-        bookOutTime: new Date('11-Nov-12'),
-      },
-    ];
   }
 }
 

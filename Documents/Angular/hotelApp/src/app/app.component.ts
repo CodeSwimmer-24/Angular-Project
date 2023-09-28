@@ -1,10 +1,12 @@
 import {
   Component,
   ElementRef,
+  Optional,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { RoomsComponent } from './rooms/rooms.component';
+import { LoggerService } from './logger.service';
 
 @Component({
   selector: 'hotelApp-root',
@@ -13,6 +15,7 @@ import { RoomsComponent } from './rooms/rooms.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  constructor(@Optional() private logger: LoggerService) {}
   title = 'hotelApp';
   // role = 'user';
   @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
@@ -20,6 +23,7 @@ export class AppComponent {
   @ViewChild('name', { static: true }) name!: ElementRef;
 
   ngOnInit() {
+    this.logger?.log('Logger service initialized...');
     this.name.nativeElement.innerText = 'My Name';
   }
 

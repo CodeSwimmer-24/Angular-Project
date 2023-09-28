@@ -18,6 +18,7 @@
 <button (click)="addRooms()">Add Room</button>
 <div>
   <hotelApp-rooms-lists
+    *ngIf="hideRooms"
     [roomsDetail]="roomsDetail"
     (selectedRoom)="selectRoom($event)"
     [title]="title"
