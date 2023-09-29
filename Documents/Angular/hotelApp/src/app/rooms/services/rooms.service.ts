@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { RoomDetails } from '../rooms';
+import { APP_CONFIG_SERVICE } from 'src/app/AppConfig/appConfig.service';
+import { AppConfig } from 'src/app/AppConfig/app.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +37,8 @@ export class RoomsService {
       bookOutTime: new Date('11-Nov-12'),
     },
   ];
-  constructor() {
+  constructor(@Inject(APP_CONFIG_SERVICE) private config: AppConfig) {
+    console.log(this.config.apiEndPoint);
     console.log('Room service initialized...');
   }
   getRooms() {

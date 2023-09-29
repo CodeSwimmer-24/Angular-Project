@@ -10,5 +10,5 @@ import { RoomsService } from '../rooms/services/rooms.service';
 export class EmployeesComponent {
   empName: string = 'Fahad Mhamood';
 
-  constructor(@Self() private roomServices: RoomsService) {}
+  constructor() {}
 }

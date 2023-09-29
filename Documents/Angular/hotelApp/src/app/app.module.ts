@@ -9,11 +9,27 @@ import { RoomsListsComponent } from './rooms/rooms-lists/rooms-lists.component';
 import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeesComponent } from './employees/employees.component';
+import {
+  API_ENDPOINTS,
+  APP_CONFIG_SERVICE,
+} from './AppConfig/appConfig.service';
 
 @NgModule({
-  declarations: [AppComponent, RoomsComponent, RoomsListsComponent, HeaderComponent, ContainerComponent, EmployeesComponent],
+  declarations: [
+    AppComponent,
+    RoomsComponent,
+    RoomsListsComponent,
+    HeaderComponent,
+    ContainerComponent,
+    EmployeesComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
-  providers: [],
+  providers: [
+    {
+      provide: APP_CONFIG_SERVICE,
+      useValue: API_ENDPOINTS,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
