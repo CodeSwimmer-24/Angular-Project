@@ -5,9 +5,10 @@ export interface Room {
 }
 
 export interface RoomDetails {
-  rooNo: number;
+  roomNumber?: string;
   roomType: string;
-  avalabel: boolean;
-  bookInTime: Date;
-  bookOutTime: Date;
+  amenities: string;
+  price: number;
+  checkinTime: Date;
+  checkoutTime: Date;
 }

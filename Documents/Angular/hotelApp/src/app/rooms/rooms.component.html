@@ -1,8 +1,10 @@
 <!-- <h1>My hotel name is {{ hotelName }}</h1> -->
 
 <hotelApp-header></hotelApp-header>
-<hotelApp-header></hotelApp-header>
-<hotelApp-header></hotelApp-header>
+<!-- <hotelApp-header></hotelApp-header>
+<hotelApp-header></hotelApp-header> -->
+
+<!-- {{ rooms$ | async | json }} -->
 
 <div [hidden]="hideRooms">
   <div [innerHTML]="noOfRooms"></div>
@@ -13,13 +15,22 @@
   <h1>Available Rooms</h1>
 </div>
 
+<h1>{{ getError$ | async }}</h1>
+
 <button (click)="toogle()">Toogle</button>
 
 <button (click)="addRooms()">Add Room</button>
+
+<button (click)="editRooms()">Edit Room</button>
+
+<button (click)="deleteRooms()">Delete Room</button>
+
+<h1>No of Rooms : {{ getRoomsCount$ | async }}</h1>
+
 <div>
   <hotelApp-rooms-lists
-    *ngIf="hideRooms"
-    [roomsDetail]="roomsDetail"
+    *ngIf="rooms$ | async as rooms"
+    [roomsDetail]="rooms"
     (selectedRoom)="selectRoom($event)"
     [title]="title"
   ></hotelApp-rooms-lists>

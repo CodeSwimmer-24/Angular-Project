@@ -19,7 +19,7 @@ import { RoomDetails } from '../rooms';
 export class RoomsListsComponent implements OnChanges, OnDestroy {
   @Input() title = '';
 
-  @Input() roomsDetail: RoomDetails[] = [];
+  @Input() roomsDetail: RoomDetails[] | null = [];
   @Output() selectedRoom = new EventEmitter<RoomDetails>();
 
   ngOnChanges(changes: SimpleChanges): void {
